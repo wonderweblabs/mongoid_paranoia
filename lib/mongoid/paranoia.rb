@@ -200,6 +200,8 @@ module Mongoid
       query = paranoid_collection.find(atomic_selector)
       if Mongoid::Compatibility::Version.mongoid5?
         query.update_one(value)
+      elsif Mongoid::Compatibility::Version.mongoid6?
+        query.update_one(value)
       else
         query.update(value)
       end
